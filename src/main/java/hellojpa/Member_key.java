@@ -4,7 +4,8 @@ import javax.persistence.*;
 
 @Entity
 @SequenceGenerator(name="member_seq_generator",
-sequenceName = "member_seq")
+sequenceName = "member_seq",
+initialValue = 1, allocationSize = 50)
 public class Member_key {
 
     @Id
