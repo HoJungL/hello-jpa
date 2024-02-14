@@ -29,8 +29,14 @@ public class JpaMain {
 
 
         try {
-            //
-            Member member = em.find(Member.class, 150L);
+            Member member = new Member();
+            member.setId(1L);
+            member.setUsername("A");
+            member.setRoleType(RoleType.USER);
+
+            em.persist(member);
+
+//            Member member = em.find(Member.class, 150L);
             //영속
 /*
             Member member1 = new Member(150L, "A");
