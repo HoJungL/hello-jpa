@@ -3,17 +3,25 @@ package hellojpa;
 import javax.persistence.*;
 
 @Entity
-@SequenceGenerator(name="member_seq_generator",
-sequenceName = "member_seq",
-initialValue = 1, allocationSize = 50)
 public class Member_key {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "member_seq_generator")
+    @GeneratedValue()
+    @Column(name="MEMBER_ID")
     private Long id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "USERNAME")
     private String username;
+    @Column(name = "TEAM_ID")
+    private Long teamId;
+    public Long getTeamId() {
+        return teamId;
+    }
+
+    public void setTeamId(Long teamId) {
+        this.teamId = teamId;
+    }
+
 
     public Member_key() {
     }

@@ -14,22 +14,19 @@ public class JpaMain_key {
         tx.begin();
 
         try {
-            Member_key member1 = new Member_key();
-            member1.setUsername("A");
-            Member_key member2 = new Member_key();
-            member2.setUsername("B");
-            Member_key member3 = new Member_key();
-            member3.setUsername("C");
+            Team_key team = new Team_key();
+            team.setName("TeamA");
+            em.persist(team);
 
-            System.out.println("/////////////////");
-
+            Member_key memberKey = new Member_key();
+            memberKey.setUsername("member1");
+            memberKey.setTeamId(team.getId());
+            em.persist(memberKey);
+            /*
             em.persist(member1); // 1, 51 메모리 호출
             em.persist(member2); // memory호출
             em.persist(member3); // memory호출
-            System.out.println("member1 = "+member1.getId());
-            System.out.println("member2 = "+member2.getId());
-            System.out.println("member3 = "+member3.getId());
-
+            */
             tx.commit();
 
         } catch (Exception e) {
