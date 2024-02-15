@@ -23,12 +23,10 @@ public class JpaMain_key {
 
             Member_key memberKey = new Member_key();
             memberKey.setUsername("member1");
-            memberKey.setTeam(team); // 이게 중요함.
+            memberKey.changeTeam(team); // 이게 중요함.
             em.persist(memberKey);
 
-            //양방향일떄는 둘다 값 세팅 꼭하셈, (//이게 중요함. 부분과 아래의 코드)
-            team.getMembers().add(memberKey);
-
+            //양방향일떄는 둘다 값 세팅 꼭하셈 -> ;Member_key의 setTeam에 적어놓기.
             //역방향(주인이 아닌 방향)만 연관관계 설정
             // team.getMembers().add(memberKey); 이러면 DB에 안들어간당?
 

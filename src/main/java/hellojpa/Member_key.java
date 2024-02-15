@@ -5,6 +5,7 @@ import javax.persistence.*;
 @Entity
 public class Member_key {
 
+    // 나는야 연관관계 주인(OWNER) 나는 코딩할때 주인을 기준으로 반드시 changeTeam을 쓸거임
     @Id
     @GeneratedValue()
     @Column(name="MEMBER_ID")
@@ -46,8 +47,9 @@ public class Member_key {
         return team;
     }
 
-    public void setTeam(Team_key team) {
+    public void changeTeam(Team_key team) {
         this.team = team;
+        team.getMembers().add(this);
     }
 
 }
