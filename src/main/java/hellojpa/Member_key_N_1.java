@@ -14,6 +14,12 @@ public class Member_key_N_1 {
     @Column(name = "USERNAME")
     private String username;
 
+    //이거 넣으면 양방향
+    @ManyToOne
+    @JoinColumn(name = "TEAM_ID", insertable = false, updatable = false)
+    private Team_key_N_1 team;
+
+
     public Long getId() {
         return id;
     }
