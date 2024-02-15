@@ -12,15 +12,15 @@ public class Member_key {
 
     @Column(name = "USERNAME")
     private String username;
-    @Column(name = "TEAM_ID")
-    private Long teamId;
-    public Long getTeamId() {
-        return teamId;
-    }
 
-    public void setTeamId(Long teamId) {
-        this.teamId = teamId;
-    }
+
+    // 1:N 관계
+    @ManyToOne
+    @JoinColumn(name = "TEAM_ID")
+    private Team_key team;
+
+    // @Column(name = "TEAM_ID")
+    // private Long teamId;
 
 
     public Member_key() {
@@ -41,4 +41,13 @@ public class Member_key {
     public void setUsername(String username) {
         this.username = username;
     }
+
+    public Team_key getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team_key team) {
+        this.team = team;
+    }
+
 }
