@@ -26,6 +26,11 @@ public class JpaMain {
 
         tx.commit();
         em.close();*/
+        /*
+        // proxy
+        Member refMember = em.getReference(Member.class, member.getId());
+
+         */
 
 
         try {

@@ -15,13 +15,10 @@ public class Member_key_1_1 extends BaseEntity {
     private String username;
 
     //insert, update 안넣으면 주인취급하기 때문에 읽기전용이 아님. 반드시 넣어줄것.
-    @ManyToOne
-    @JoinColumn(name = "TEAM_ID", insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.LAZY) // 지연로딩.
+    //@ManyToOne(fetch = FetchType.EAGER) 즉시로딩 넌 쓰지 않아요 실무에서..
+    @JoinColumn(name = "TEAM_ID")
     private Team_key_1_1 team;
-
-    @OneToOne
-    @JoinColumn(name = "LOCKER_ID")
-    private Locker locker;
 
 
     public Long getId() {
@@ -40,4 +37,11 @@ public class Member_key_1_1 extends BaseEntity {
         this.username = username;
     }
 
+    public Team_key_1_1 getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team_key_1_1 team) {
+        this.team = team;
+    }
 }
