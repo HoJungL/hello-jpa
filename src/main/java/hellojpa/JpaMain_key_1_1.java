@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.time.LocalDateTime;
 
 public class JpaMain_key_1_1 {
 
@@ -14,6 +15,11 @@ public class JpaMain_key_1_1 {
         tx.begin();
 
         try {
+
+            Member_key_1_1 memkey = new Member_key_1_1();
+            memkey.setUsername("user1");
+            memkey.setCreatedBy("kim");
+            memkey.setCreatedDate(LocalDateTime.now());
 
             Member_key_1_1 memberKey11 = new Member_key_1_1();
             memberKey11.setUsername("member1");

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Team_key_1_1 {
+public class Team_key_1_1 extends BaseEntity{
 
     @Id
     @GeneratedValue
