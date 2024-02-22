@@ -22,6 +22,16 @@ public class MemberEm {
     //주소 Address
     @Embedded
     private Address homeAddress;
+    @Embedded
+    //잘 안쓰긴하지만, 필요한 경우가 있을 수 있어요~
+    @AttributeOverrides({
+            @AttributeOverride(name="city",
+                    column=@Column(name = "WORK_CITY")),
+            @AttributeOverride(name="street",
+                    column=@Column(name = "WORK_STREET")),
+            @AttributeOverride(name="zipcode",
+                    column=@Column(name = "WORK_ZIPCODE"))})
+    private Address workAddress;
 
     public Long getId() {
         return id;
