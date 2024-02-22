@@ -22,6 +22,7 @@ public class ValueMain {
         Address add1 = new Address("city", "street", "10000");
         Address add2 = new Address("city", "street", "10000");
         System.out.println("add1 == add2 : " + (add1 == add2));
+        System.out.println("add1 equals add2 : " + (add1.equals(add2)));
 
 
     }
