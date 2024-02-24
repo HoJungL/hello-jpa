@@ -14,6 +14,20 @@ public class JpaMainEm {
         tx.begin();
 
         try{
+            MemberEm member = new MemberEm();
+            member.setUsername("member1");
+            member.setHomeAddress(new Address("HomeCity", "street", "10000"));
+
+            member.getFavoriteFoods().add("라멘");
+            member.getFavoriteFoods().add("족발");
+            member.getFavoriteFoods().add("피자");
+
+            member.getAddressHistory().add(new Address("old1", "street", "10000"));
+            member.getAddressHistory().add(new Address("old2", "street", "10000"));
+
+            em.persist(member);
+
+            /*
             Address address = new Address("city", "street", "10000");
 
             MemberEm memberEm1 = new MemberEm();
@@ -28,7 +42,7 @@ public class JpaMainEm {
             memberEm2.setHomeAddress(copyAddress);
             em.persist(memberEm2);
 
-            memberEm1.getHomeAddress().setCity("newCity");
+            memberEm1.getHomeAddress().setCity("newCity");*/
 
             // 임베디드 타입을 여러 엔티티에서 공유하면 위험해요....
             // 부작용(side effect) 생겨요.
@@ -38,7 +52,7 @@ public class JpaMainEm {
         } catch (Exception e){
 
             tx.rollback();
-
+            e.printStackTrace();
         } finally {
             em.close();
         }

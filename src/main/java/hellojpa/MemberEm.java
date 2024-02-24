@@ -3,6 +3,10 @@ package hellojpa;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 public class MemberEm {
@@ -22,7 +26,18 @@ public class MemberEm {
     //주소 Address
     @Embedded
     private Address homeAddress;
-    @Embedded
+
+    @ElementCollection
+    @CollectionTable(name = "FAVORITE_FOOD",
+            joinColumns = @JoinColumn(name = "MEMBER_ID"))
+    @Column(name = "FOOD_NAME") // 예외로 되는거임. 값이 하나고, 정의한게 아니니까!
+    private Set<String> favoriteFoods = new HashSet<>();
+
+    @ElementCollection
+    @CollectionTable(name = "ADDRESS",
+            joinColumns = @JoinColumn(name = "MEMBER_ID"))
+    private List<Address> addressHistory = new ArrayList<>();
+/*    @Embedded
     //잘 안쓰긴하지만, 필요한 경우가 있을 수 있어요~
     @AttributeOverrides({
             @AttributeOverride(name="city",
@@ -31,7 +46,7 @@ public class MemberEm {
                     column=@Column(name = "WORK_STREET")),
             @AttributeOverride(name="zipcode",
                     column=@Column(name = "WORK_ZIPCODE"))})
-    private Address workAddress;
+    private Address workAddress;*/
 
     public Long getId() {
         return id;
@@ -63,5 +78,21 @@ public class MemberEm {
 
     public void setHomeAddress(Address homeAddress) {
         this.homeAddress = homeAddress;
+    }
+
+    public Set<String> getFavoriteFoods() {
+        return favoriteFoods;
+    }
+
+    public void setFavoriteFoods(Set<String> favoriteFoods) {
+        this.favoriteFoods = favoriteFoods;
+    }
+
+    public List<Address> getAddressHistory() {
+        return addressHistory;
+    }
+
+    public void setAddressHistory(List<Address> addressHistory) {
+        this.addressHistory = addressHistory;
     }
 }
